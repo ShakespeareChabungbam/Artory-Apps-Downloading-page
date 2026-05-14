@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Artory Movies — a beautifully crafted, free movie streaming app for macOS & Android.">
+    <title>Artory Movies — Stream Free</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progress-bar"></div>
+
+<!-- 3D Particle Canvas -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- Cursor Follower -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">
+            <img src="icon.png" alt="Artory" class="brand-icon">
+            <span class="brand-name">Artory<span class="brand-accent">Movies</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how" class="nav-link">How it works</a>
+            <a href="#screenshots" class="nav-link">Screenshots</a>
+            <a href="#downloads" class="nav-link">Download</a>
+        </div>
+        <a href="#downloads" class="nav-cta" id="nav-cta-btn">
+            <span>Get Free</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+        </a>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+    <!-- 3D Floating Shapes -->
+    <div class="shapes-layer" aria-hidden="true">
+        <div class="shape shape-cube" data-speed="0.04"><div class="cube3d"><div class="face f"></div><div class="face ba"></div><div class="face l"></div><div class="face r"></div><div class="face t"></div><div class="face bo"></div></div></div>
+        <div class="shape shape-ring" data-speed="0.03"></div>
+        <div class="shape shape-tri" data-speed="0.05"><div class="tri3d"><div class="tri-f tf1"></div><div class="tri-f tf2"></div><div class="tri-f tf3"></div><div class="tri-f tf4"></div></div></div>
+        <div class="shape shape-sphere" data-speed="0.02"></div>
+        <div class="shape shape-diamond" data-speed="0.06"><div class="dia3d"><div class="dia-f d1"></div><div class="dia-f d2"></div><div class="dia-f d3"></div><div class="dia-f d4"></div><div class="dia-f d5"></div><div class="dia-f d6"></div><div class="dia-f d7"></div><div class="dia-f d8"></div></div></div>
+        <div class="shape shape-donut" data-speed="0.035"></div>
+        <div class="shape shape-cross" data-speed="0.045"><div class="cr-h"></div><div class="cr-v"></div></div>
+        <div class="shape shape-dots" data-speed="0.015"></div>
+        <div class="shape shape-hex" data-speed="0.025"></div>
+        <div class="shape shape-arc" data-speed="0.04"></div>
+    </div>
+
+    <!-- Perspective Grid -->
+    <div class="hero-grid" aria-hidden="true"><div class="grid-plane"></div></div>
+
+    <div class="hero-inner">
+        <div class="hero-content" id="hero-content">
+            <div class="hero-badge"><span class="badge-dot"></span>100% Free &amp; Open</div>
+            <h1 class="hero-h1">
+                <span class="h1-line">Every great story</span>
+                <span class="h1-typed"><span id="typed-text"></span><span class="caret">|</span></span>
+            </h1>
+            <p class="hero-p">A beautifully crafted movie experience for macOS &amp; Android. Stream trending films, TV series, and more — completely free, forever.</p>
+            <div class="hero-btns">
+                <a href="#downloads" class="btn btn-fill">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    Download Free
+                </a>
+                <a href="#features" class="btn btn-ghost">Explore Features →</a>
+            </div>
+            <div class="hero-platforms">
+                <span class="plat-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg> macOS</span>
+                <span class="plat-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 2.237a.625.625 0 010 .884l-1.2 1.2A7.454 7.454 0 0119.5 10.5h-15a7.454 7.454 0 013.177-6.178l-1.2-1.2a.625.625 0 01.884-.884l1.328 1.328A7.39 7.39 0 0112 2.75c1.2 0 2.335.284 3.34.793l1.299-1.306a.625.625 0 01.884 0zM10 7a.75.75 0 11-1.5 0A.75.75 0 0110 7zm5.5 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM4.5 12v6a2.5 2.5 0 002.5 2.5h1v2.25a1.25 1.25 0 102.5 0V20.5h3v2.25a1.25 1.25 0 102.5 0V20.5h1a2.5 2.5 0 002.5-2.5v-6h-15z"/></svg> Android</span>
+                <span class="plat-chip">🆓 No sign-up</span>
+            </div>
+        </div>
+        <div class="hero-visual" id="hero-visual">
+            <div class="phone-3d" data-tilt>
+                <div class="phone-bezel">
+                    <div class="phone-notch"></div>
+                    <img src="screenshot-home.png" alt="Artory Movies" class="phone-img" loading="eager">
+                </div>
+                <div class="phone-shadow"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-track"><div class="scroll-thumb"></div></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span>★ Trending Movies</span><span>★ TV Series</span><span>★ Action</span><span>★ Drama</span><span>★ Sci-Fi</span><span>★ Horror</span><span>★ Comedy</span><span>★ Anime</span><span>★ Crime</span>
+        <span>★ Trending Movies</span><span>★ TV Series</span><span>★ Action</span><span>★ Drama</span><span>★ Sci-Fi</span><span>★ Horror</span><span>★ Comedy</span><span>★ Anime</span><span>★ Crime</span>
+    </div>
+</div>
+
+<!-- ========== FEATURES ========== -->
+<section class="section sec-features" id="features">
+    <header class="sec-head anim-up">
+        <span class="chip">Features</span>
+        <h2 class="sec-title">Cinema-quality experience,<br>right in your pocket</h2>
+        <p class="sec-sub">Everything you need to discover, watch, and enjoy movies — all free.</p>
+    </header>
+
+    <div class="feat-row anim-up">
+        <div class="feat-media" data-tilt>
+            <div class="feat-card-wrap">
+                <img src="screenshot-home.png" alt="Home Screen" class="feat-img" loading="lazy">
+                <div class="feat-gloss"></div>
+            </div>
+        </div>
+        <div class="feat-text">
+            <div class="feat-num">01</div>
+            <h3>Discover trending content</h3>
+            <p>Browse curated carousels of trending, action, drama, sci-fi, horror, comedy — updated in real time via TMDB. A hero banner auto-rotates the hottest titles.</p>
+            <ul class="feat-checks">
+                <li>Real-time trending data</li>
+                <li>Genre quick-filter pills</li>
+                <li>Continue Watching history</li>
+                <li>Auto-rotating hero banner</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="feat-row reverse anim-up">
+        <div class="feat-media" data-tilt>
+            <div class="feat-card-wrap">
+                <img src="screenshot-player.png" alt="Player" class="feat-img" loading="lazy">
+                <div class="feat-gloss"></div>
+            </div>
+        </div>
+        <div class="feat-text">
+            <div class="feat-num">02</div>
+            <h3>Immersive cinematic player</h3>
+            <p>An Apple TV+ inspired full-screen player with auto-landscape mode, elegant overlay controls, subtitle support, and picture-in-picture.</p>
+            <ul class="feat-checks">
+                <li>Full-screen immersive mode</li>
+                <li>Auto-hide overlay controls</li>
+                <li>Subtitles &amp; audio switching</li>
+                <li>Picture-in-Picture support</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="feat-row anim-up">
+        <div class="feat-media" data-tilt>
+            <div class="feat-card-wrap">
+                <img src="screenshot-search.png" alt="Search" class="feat-img" loading="lazy">
+                <div class="feat-gloss"></div>
+            </div>
+        </div>
+        <div class="feat-text">
+            <div class="feat-num">03</div>
+            <h3>Find anything instantly</h3>
+            <p>Powerful search across thousands of movies and TV shows. Browse by category, explore by genre, or save titles to your personal watchlist.</p>
+            <ul class="feat-checks">
+                <li>Instant search results</li>
+                <li>Category grid browser</li>
+                <li>Personal My List bookmarks</li>
+                <li>10,000+ titles available</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="section sec-how" id="how">
+    <header class="sec-head anim-up">
+        <span class="chip">How it works</span>
+        <h2 class="sec-title">Three steps to start watching</h2>
+        <p class="sec-sub">From download to your first movie in under 60 seconds.</p>
+    </header>
+    <div class="steps-grid">
+        <div class="step-card anim-up" data-tilt>
+            <div class="step-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            </div>
+            <span class="step-num">Step 1</span>
+            <h3>Download the app</h3>
+            <p>Grab Artory Movies for macOS or Android — it takes only seconds. No account needed.</p>
+        </div>
+        <div class="step-line anim-up"></div>
+        <div class="step-card anim-up" data-tilt>
+            <div class="step-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
+            </div>
+            <span class="step-num">Step 2</span>
+            <h3>Open &amp; browse</h3>
+            <p>Launch the app and explore thousands of movies and TV series organized by genre.</p>
+        </div>
+        <div class="step-line anim-up"></div>
+        <div class="step-card anim-up" data-tilt>
+            <div class="step-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="step-num">Step 3</span>
+            <h3>Watch for free</h3>
+            <p>Tap any title and start streaming instantly. No subscriptions, no ads, no limits.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="section sec-stats" id="stats">
+    <div class="stats-row">
+        <div class="stat anim-up" data-tilt>
+            <span class="stat-emoji">🎬</span>
+            <span class="stat-val" data-count="10000">0</span><span class="stat-suffix">+</span>
+            <span class="stat-lbl">Movies &amp; Shows</span>
+        </div>
+        <div class="stat anim-up" data-tilt>
+            <span class="stat-emoji">🎭</span>
+            <span class="stat-val" data-count="9">0</span>
+            <span class="stat-lbl">Genre Categories</span>
+        </div>
+        <div class="stat anim-up" data-tilt>
+            <span class="stat-emoji">💰</span>
+            <span class="stat-val">$0</span>
+            <span class="stat-lbl">Forever Free</span>
+        </div>
+        <div class="stat anim-up" data-tilt>
+            <span class="stat-emoji">📱</span>
+            <span class="stat-val" data-count="3">0</span>
+            <span class="stat-lbl">Platforms</span>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SCREENSHOT GALLERY ========== -->
+<section class="section sec-gallery" id="screenshots">
+    <header class="sec-head anim-up">
+        <span class="chip">Screenshots</span>
+        <h2 class="sec-title">See it in action</h2>
+        <p class="sec-sub">A glimpse of the cinematic experience waiting for you.</p>
+    </header>
+    <div class="gallery-track anim-up">
+        <div class="gallery-card" data-tilt><img src="screenshot-home.png" alt="Home" loading="lazy"><span>Home Screen</span></div>
+        <div class="gallery-card" data-tilt><img src="screenshot-player.png" alt="Player" loading="lazy"><span>Video Player</span></div>
+        <div class="gallery-card" data-tilt><img src="screenshot-search.png" alt="Search" loading="lazy"><span>Search &amp; Discover</span></div>
+    </div>
+</section>
+
+<!-- ========== DOWNLOADS ========== -->
+<section class="section sec-downloads" id="downloads">
+    <header class="sec-head anim-up">
+        <span class="chip">Download</span>
+        <h2 class="sec-title">Get Artory Movies — It's free</h2>
+        <p class="sec-sub">Pick your platform and start streaming in seconds.</p>
+    </header>
+    <div class="dl-grid">
+        <article class="dl-card anim-up" data-tilt>
+            <div class="dl-shine"></div>
+            <div class="dl-body">
+                <div class="dl-icon-wrap"><img src="icon.png" alt="Artory" class="dl-icon"></div>
+                <span class="dl-badge">Desktop</span>
+                <h3>Artory Movies Desktop</h3>
+                <code class="dl-file">artory_movies.app</code>
+                <dl class="dl-meta"><div><dt>Platform</dt><dd>macOS</dd></div><div><dt>Size</dt><dd>~85 MB</dd></div><div><dt>Price</dt><dd>Free</dd></div></dl>
+                <a href="https://github.com/ShakespeareChabungbam/Artory-Apps-Downloading-page/releases/download/v1.0.0/ArtoryMovies_Desktop.zip" class="btn btn-dark dl-btn" id="btn-mac">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    Download for Mac
+                </a>
+            </div>
+        </article>
+        <article class="dl-card anim-up" data-tilt>
+            <div class="dl-shine"></div>
+            <div class="dl-body">
+                <div class="dl-icon-wrap"><div class="dl-icon-android"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M17.523 2.237a.625.625 0 010 .884l-1.2 1.2A7.454 7.454 0 0119.5 10.5h-15a7.454 7.454 0 013.177-6.178l-1.2-1.2a.625.625 0 01.884-.884l1.328 1.328A7.39 7.39 0 0112 2.75c1.2 0 2.335.284 3.34.793l1.299-1.306a.625.625 0 01.884 0zM10 7a.75.75 0 11-1.5 0A.75.75 0 0110 7zm5.5 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM4.5 12v6a2.5 2.5 0 002.5 2.5h1v2.25a1.25 1.25 0 102.5 0V20.5h3v2.25a1.25 1.25 0 102.5 0V20.5h1a2.5 2.5 0 002.5-2.5v-6h-15zM2 11.75a1.25 1.25 0 112.5 0v4.5a1.25 1.25 0 11-2.5 0v-4.5zm17.5 0a1.25 1.25 0 112.5 0v4.5a1.25 1.25 0 11-2.5 0v-4.5z"/></svg></div></div>
+                <span class="dl-badge badge-green">Android</span>
+                <h3>Artory Movies Mobile</h3>
+                <code class="dl-file">ArtoryMovies_Final.apk</code>
+                <dl class="dl-meta"><div><dt>Platform</dt><dd>Android</dd></div><div><dt>Size</dt><dd>22.5 MB</dd></div><div><dt>Price</dt><dd>Free</dd></div></dl>
+                <a href="https://github.com/ShakespeareChabungbam/Artory-Apps-Downloading-page/releases/download/v1.0.0/ArtoryMovies_Final.apk" class="btn btn-green dl-btn" id="btn-apk">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    Download APK
+                </a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section sec-faq" id="faq">
+    <header class="sec-head anim-up">
+        <span class="chip">FAQ</span>
+        <h2 class="sec-title">Frequently asked questions</h2>
+    </header>
+    <div class="faq-list anim-up">
+        <details class="faq"><summary>Is Artory Movies really free?</summary><p>Yes — 100% free, forever. No subscriptions, no in-app purchases, no hidden fees. We built this as a passion project for movie lovers.</p></details>
+        <details class="faq"><summary>Do I need to create an account?</summary><p>No. Just download, open, and start watching. No sign-up, no email, no personal data required.</p></details>
+        <details class="faq"><summary>Which platforms are supported?</summary><p>Artory Movies is available on macOS (desktop app) and Android (APK). iOS support is coming soon.</p></details>
+        <details class="faq"><summary>Where does the movie data come from?</summary><p>We use The Movie Database (TMDB) API for all movie information, posters, and metadata. Streaming is provided via third-party embed sources.</p></details>
+        <details class="faq"><summary>Is there a watch history feature?</summary><p>Yes! Artory Movies automatically saves your watching history so you can continue where you left off — all stored locally on your device.</p></details>
+    </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="cta-banner anim-up">
+    <div class="cta-inner">
+        <h2>Ready to start watching?</h2>
+        <p>Join thousands of movie lovers. Download Artory Movies today.</p>
+        <a href="#downloads" class="btn btn-fill btn-lg">Download Free Now</a>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="icon.png" alt="" class="footer-logo">
+            <span>Artory Movies</span>
+        </div>
+        <p class="footer-copy">&copy; 2026 Artory Movies. Free &amp; open for everyone.</p>
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#downloads">Download</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
